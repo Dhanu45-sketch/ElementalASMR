@@ -1,11 +1,13 @@
-
-
-// screens/MeditationScreen.kt
+// screens/MeditationScreen.kt (REPLACE YOUR EXISTING MeditationScreen.kt)
 package com.example.elementalasmr.screens
 
+import android.content.res.Configuration
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,6 +17,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.elementalasmr.models.MeditationSession
 import com.example.elementalasmr.models.SampleData
@@ -24,6 +27,10 @@ import com.example.elementalasmr.models.SampleData
 fun MeditationScreen() {
     var showTimer by remember { mutableStateOf(false) }
     val meditationSessions = remember { SampleData.meditationSessions }
+
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+    val isTablet = configuration.screenWidthDp >= 600
 
     Scaffold(
         topBar = {
@@ -37,36 +44,159 @@ fun MeditationScreen() {
             )
         }
     ) { paddingValues ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            // Quick Timer section
-            item {
-                QuickTimerCard(
-                    isExpanded = showTimer,
-                    onToggle = { showTimer = !showTimer }
+        when {
+            isTablet -> {
+                TabletMeditationLayout(
+                    showTimer = showTimer,
+                    onToggleTimer = { showTimer = !showTimer },
+                    sessions = meditationSessions,
+                    modifier = Modifier.padding(paddingValues)
                 )
             }
+            isLandscape -> {
+                LandscapeMeditationLayout(
+                    showTimer = showTimer,
+                    onToggleTimer = { showTimer = !showTimer },
+                    sessions = meditationSessions,
+                    modifier = Modifier.padding(paddingValues)
+                )
+            }
+            else -> {
+                PortraitMeditationLayout(
+                    showTimer = showTimer,
+                    onToggleTimer = { showTimer = !showTimer },
+                    sessions = meditationSessions,
+                    modifier = Modifier.padding(paddingValues)
+                )
+            }
+        }
+    }
+}
 
-            // Section header
+@Composable
+fun PortraitMeditationLayout(
+    showTimer: Boolean,
+    onToggleTimer: () -> Unit,
+    sessions: List<MeditationSession>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        item {
+            QuickTimerCard(
+                isExpanded = showTimer,
+                onToggle = onToggleTimer
+            )
+        }
+
+        item {
+            Text(
+                text = "Guided Meditations",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+
+        items(sessions) { session ->
+            MeditationCard(
+                session = session,
+                onClick = { /* Start meditation */ }
+            )
+        }
+    }
+}
+
+@Composable
+fun LandscapeMeditationLayout(
+    showTimer: Boolean,
+    onToggleTimer: () -> Unit,
+    sessions: List<MeditationSession>,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        // Left side - Timer
+        Column(
+            modifier = Modifier
+                .weight(0.4f)
+                .fillMaxHeight()
+        ) {
+            QuickTimerCard(
+                isExpanded = true,
+                onToggle = onToggleTimer
+            )
+        }
+
+        // Right side - Sessions
+        LazyColumn(
+            modifier = Modifier.weight(0.6f),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
             item {
                 Text(
                     text = "Guided Meditations",
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(top = 8.dp)
+                    style = MaterialTheme.typography.titleLarge
                 )
             }
 
-            // Meditation session cards
-            items(meditationSessions) { session ->
-                MeditationCard(
+            items(sessions) { session ->
+                CompactMeditationCard(
                     session = session,
                     onClick = { /* Start meditation */ }
                 )
+            }
+        }
+    }
+}
+
+@Composable
+fun TabletMeditationLayout(
+    showTimer: Boolean,
+    onToggleTimer: () -> Unit,
+    sessions: List<MeditationSession>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp)
+    ) {
+        item {
+            QuickTimerCard(
+                isExpanded = showTimer,
+                onToggle = onToggleTimer
+            )
+        }
+
+        item {
+            Text(
+                text = "Guided Meditations",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+
+        item {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.height(800.dp)
+            ) {
+                items(sessions) { session ->
+                    MeditationCard(
+                        session = session,
+                        onClick = { /* Start meditation */ }
+                    )
+                }
             }
         }
     }
@@ -185,7 +315,6 @@ fun MeditationCard(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Session icon/image placeholder
             Surface(
                 modifier = Modifier.size(72.dp),
                 shape = RoundedCornerShape(12.dp),
@@ -206,7 +335,6 @@ fun MeditationCard(
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            // Session info
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = session.title,
@@ -224,7 +352,6 @@ fun MeditationCard(
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    // Duration badge
                     Surface(
                         shape = RoundedCornerShape(8.dp),
                         color = MaterialTheme.colorScheme.secondaryContainer
@@ -248,7 +375,6 @@ fun MeditationCard(
                         }
                     }
 
-                    // Difficulty badge
                     Surface(
                         shape = RoundedCornerShape(8.dp),
                         color = getDifficultyColor(session.difficulty).copy(alpha = 0.2f)
@@ -263,7 +389,6 @@ fun MeditationCard(
                 }
             }
 
-            // Play button
             IconButton(onClick = onClick) {
                 Icon(
                     imageVector = Icons.Default.PlayCircle,
@@ -276,11 +401,89 @@ fun MeditationCard(
     }
 }
 
+@Composable
+fun CompactMeditationCard(
+    session: MeditationSession,
+    onClick: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Surface(
+                modifier = Modifier.size(48.dp),
+                shape = RoundedCornerShape(8.dp),
+                color = getDifficultyColor(session.difficulty).copy(alpha = 0.2f)
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.SelfImprovement,
+                        contentDescription = null,
+                        tint = getDifficultyColor(session.difficulty),
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = session.title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = session.duration,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                    Text(
+                        text = "•",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                    )
+                    Text(
+                        text = session.difficulty,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = getDifficultyColor(session.difficulty)
+                    )
+                }
+            }
+
+            IconButton(onClick = onClick) {
+                Icon(
+                    imageVector = Icons.Default.PlayCircle,
+                    contentDescription = "Start meditation",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+        }
+    }
+}
+
 fun getDifficultyColor(difficulty: String): Color {
     return when (difficulty) {
-        "Beginner" -> Color(0xFF4CAF50) // Green
-        "Intermediate" -> Color(0xFFFFA726) // Orange
-        "Advanced" -> Color(0xFFEF5350) // Red
+        "Beginner" -> Color(0xFF4CAF50)
+        "Intermediate" -> Color(0xFFFFA726)
+        "Advanced" -> Color(0xFFEF5350)
         else -> Color.Gray
     }
 }
