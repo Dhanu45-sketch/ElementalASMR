@@ -1,6 +1,17 @@
 // screens/LoginScreen.kt & RegisterScreen.kt (REPLACE BOTH)
 package com.example.elementalasmr.screens
+// screens/LoginScreen.kt - Updated LoginHeader function
 
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.example.elementalasmr.R
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -10,8 +21,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+
+
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -140,29 +151,40 @@ fun LandscapeLoginLayout(
     }
 }
 
+
+// REPLACE the LoginHeader composable with this:
 @Composable
 fun LoginHeader() {
-    Icon(
-        imageVector = Icons.Default.Spa,
-        contentDescription = "App Logo",
-        modifier = Modifier.size(80.dp),
-        tint = MaterialTheme.colorScheme.primary
+    // Use the AURA logo image
+    Image(
+        painter = painterResource(id = R.drawable.aura_logo), // Make sure to add aura_logo.png to drawable
+        contentDescription = "AURA Logo",
+        modifier = Modifier.size(120.dp)
     )
 
     Spacer(modifier = Modifier.height(16.dp))
 
     Text(
-        text = "Elemental ASMR",
+        text = "AURA",
         style = MaterialTheme.typography.headlineLarge,
         color = MaterialTheme.colorScheme.primary
     )
 
     Text(
-        text = "Find your calm",
-        style = MaterialTheme.typography.bodyLarge,
+        text = "ASMR SOUNDS",
+        style = MaterialTheme.typography.titleMedium,
         color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
     )
+
+    Spacer(modifier = Modifier.height(8.dp))
+
+    Text(
+        text = "Find your calm",
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+    )
 }
+
 
 @Composable
 fun LoginForm(
@@ -251,4 +273,8 @@ fun LoginForm(
         }
     }
 }
+
+
+
+
 

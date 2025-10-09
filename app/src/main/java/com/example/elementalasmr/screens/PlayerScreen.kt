@@ -1,8 +1,9 @@
-// screens/PlayerScreen.kt (REPLACE YOUR EXISTING PlayerScreen.kt)
+// screens/PlayerScreen.kt (COMPLETE FILE - REPLACE EVERYTHING)
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration
 import androidx.compose.animation.core.*
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,9 +17,14 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.elementalasmr.R
+import com.example.elementalasmr.models.ElementType
 import com.example.elementalasmr.models.SampleData
 import com.example.elementalasmr.models.Sound
+import com.example.elementalasmr.utils.getElementColor
+import com.example.elementalasmr.utils.getElementIconDrawable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -116,7 +122,7 @@ fun PortraitPlayerLayout(
         ) {
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Sound artwork
+            // Sound artwork with CUSTOM ICON
             Surface(
                 modifier = Modifier.size(200.dp),
                 shape = RoundedCornerShape(24.dp),
@@ -127,10 +133,9 @@ fun PortraitPlayerLayout(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Icon(
-                        imageVector = getElementIcon(sound.element),
+                    Image(
+                        painter = painterResource(id = getElementIconDrawable(sound.element)),
                         contentDescription = sound.name,
-                        tint = elementColor,
                         modifier = Modifier.size(120.dp)
                     )
                 }
@@ -155,7 +160,7 @@ fun PortraitPlayerLayout(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Element badge
+            // Element badge with CUSTOM ICON
             Surface(
                 shape = RoundedCornerShape(16.dp),
                 color = elementColor.copy(alpha = 0.2f)
@@ -164,10 +169,9 @@ fun PortraitPlayerLayout(
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(
-                        imageVector = getElementIcon(sound.element),
+                    Image(
+                        painter = painterResource(id = getElementIconDrawable(sound.element)),
                         contentDescription = null,
-                        tint = elementColor,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
@@ -369,10 +373,9 @@ fun LandscapePlayerLayout(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        Icon(
-                            imageVector = getElementIcon(sound.element),
+                        Image(
+                            painter = painterResource(id = getElementIconDrawable(sound.element)),
                             contentDescription = sound.name,
-                            tint = elementColor,
                             modifier = Modifier.size(100.dp)
                         )
                     }
@@ -402,10 +405,9 @@ fun LandscapePlayerLayout(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = getElementIcon(sound.element),
+                        Image(
+                            painter = painterResource(id = getElementIconDrawable(sound.element)),
                             contentDescription = null,
-                            tint = elementColor,
                             modifier = Modifier.size(14.dp)
                         )
                         Spacer(modifier = Modifier.width(4.dp))
@@ -557,3 +559,5 @@ fun formatTime(seconds: Int): String {
     val secs = seconds % 60
     return String.format("%d:%02d", mins, secs)
 }
+
+

@@ -1,4 +1,3 @@
-
 // ui/theme/Theme.kt
 package com.example.elementalasmr.ui.theme
 
@@ -46,8 +45,8 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun ElementalASMRTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(), // Automatically detects system theme
-    dynamicColor: Boolean = true, // Dynamic color is available on Android 12+
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = false, // Changed to false to use AURA colors
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

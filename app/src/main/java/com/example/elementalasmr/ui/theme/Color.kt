@@ -1,34 +1,39 @@
-
-// ui/theme/Color.kt
+// ui/theme/Color.kt (REPLACE YOUR ENTIRE FILE)
 package com.example.elementalasmr.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Light theme colors
-val PrimaryLight = Color(0xFF6B8E23)      // Olive green
-val SecondaryLight = Color(0xFF4682B4)    // Steel blue
-val TertiaryLight = Color(0xFFFF6347)     // Tomato
-val BackgroundLight = Color(0xFFFAFAFA)   // Off-white
-val SurfaceLight = Color(0xFFFFFFFF)      // White
-val OnPrimaryLight = Color(0xFFFFFFFF)    // White text on primary
-val OnBackgroundLight = Color(0xFF1C1B1F) // Dark text
+// AURA Brand Colors - Derived from the vibrant color swatch image (top to bottom)
+val AuraDarkBlue = Color(0xFF25283D)        // Dark Blue - Used for Dark Mode Background
+val AuraDeepRed = Color(0xFF802B48)        // Deep Berry/Burgundy
+val AuraBrightRed = Color(0xFFBD4D4F)      // Muted Red/Rose
+val AuraSalmon = Color(0xFFDF796B)         // Terracotta/Dusty Red
+val AuraWarmOrange = Color(0xFFF1B098)     // Soft Peach/Salmon - Used for Light Mode Background
 
-// Dark theme colors
-val PrimaryDark = Color(0xFF8FBC8F)        // Dark sea green
-val SecondaryDark = Color(0xFF5F9EA0)      // Cadet blue
-val TertiaryDark = Color(0xFFFF8C00)       // Dark orange
-val BackgroundDark = Color(0xFF1C1B1F)     // Almost black
-val SurfaceDark = Color(0xFF2B2930)        // Dark gray
-val OnPrimaryDark = Color(0xFF003A00)      // Dark green for text
-val OnBackgroundDark = Color(0xFFE6E1E5)   // Light gray text
+// Light theme colors - Muted Orange/Peach Background
+val PrimaryLight = AuraBrightRed           // A key brand color for accents
+val SecondaryLight = AuraSalmon            // Secondary accent/surface color
+val TertiaryLight = AuraDeepRed            // Darker accent
+val BackgroundLight = AuraWarmOrange       // Soft Peach/Salmon background
+val SurfaceLight = Color(0xFFFBF5E5)        // Very light cream/off-white for cards (ensures legibility)
+val OnPrimaryLight = Color(0xFFFFFFFF)     // White text on primary accent
+val OnBackgroundLight = AuraDarkBlue       // Dark Blue text on light background (ensures legibility)
 
-// Element colors (work in both themes)
-val EarthPrimary = Color(0xFF6B8E23)
-val EarthSecondary = Color(0xFF8FBC8F)
-val FirePrimary = Color(0xFFFF6347)
-val FireSecondary = Color(0xFFFF8C00)
-val WaterPrimary = Color(0xFF4682B4)
-val WaterSecondary = Color(0xFF5F9EA0)
-val WindPrimary = Color(0xFF87CEEB)
-val WindSecondary = Color(0xFFB0C4DE)
+// Dark theme colors - Dark Blue Background
+val PrimaryDark = AuraSalmon               // Terracotta accent for dark mode contrast
+val SecondaryDark = AuraBrightRed          // Secondary accent
+val TertiaryDark = AuraDeepRed
+val BackgroundDark = AuraDarkBlue          // Deep Dark Blue background
+val SurfaceDark = Color(0xFF3B4058)        // Slightly lighter dark blue for surfaces/cards
+val OnPrimaryDark = AuraDarkBlue           // Dark text on bright accent
+val OnBackgroundDark = Color(0xFFF1F0EB)    // Light off-white text on dark background (ensures legibility)
 
+// Element colors (Adjusted to new palette while maintaining element identity)
+val EarthPrimary = AuraDeepRed
+val EarthSecondary = AuraSalmon
+val FirePrimary = AuraBrightRed
+val FireSecondary = AuraWarmOrange
+val WaterPrimary = Color(0xFF4682B4)        // Classic Blue for Water (outside of main palette for contrast)
+val WaterSecondary = Color(0xFFB0C4DE)
+val WindPrimary = Color(0xFF87CEEB)         // Light Blue for Wind (outside of main palette for contrast)
+val WindSecondary = Color(0xFFE0FFFF)

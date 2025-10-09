@@ -1,4 +1,6 @@
-<resources>
-    <string name="app_name">ElementalASMR</string>
-</resources>
 
+
+<resources>
+<string name="app_name">AURA</string>
+<string name="app_subtitle">ASMR Sounds</string>
+</resources>

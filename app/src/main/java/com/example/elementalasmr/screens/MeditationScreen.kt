@@ -21,6 +21,9 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.elementalasmr.models.MeditationSession
 import com.example.elementalasmr.models.SampleData
+import com.example.elementalasmr.utils.getElementColor
+import com.example.elementalasmr.utils.getElementColor
+import com.example.elementalasmr.utils.getElementIconDrawable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
