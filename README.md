@@ -240,94 +240,6 @@ Uses `LocalConfiguration.current` to detect:
 
 
 
-\## 📋 Assignment Requirements Checklist
-
-
-
-\### Assignment 2 - Mobile App Development
-
-
-
-\#### ✅ Platform Requirements (10 marks)
-
-\- \[x] Conforms to Android platform requirements
-
-\- \[x] Material Design look and feel
-
-\- \[x] Appropriate content (no Lorem ipsum)
-
-\- \[x] Optimized media formats
-
-\- \[x] Properly formatted text with appropriate fonts
-
-
-
-\#### ✅ Theme Support (10 marks)
-
-\- \[x] Light and dark mode based on device settings
-
-\- \[x] Accessible colors in both modes
-
-\- \[x] Proper contrast ratios for readability
-
-
-
-\#### ✅ Navigation \& Screens (20 marks)
-
-\- \[x] Login screen with link to register
-
-\- \[x] 4+ additional screens (Home, Library, Player, Meditation, Profile)
-
-\- \[x] Fixed bottom navigation bar
-
-\- \[x] Master/detail interaction (Element → Sounds → Player)
-
-
-
-\#### ✅ Responsiveness (10 marks)
-
-\- \[x] Different layouts for orientation changes (Portrait/Landscape)
-
-\- \[x] Different layouts for screen sizes (Phone/Tablet)
-
-\- \[x] Micro-interaction animations (Play button scale animation)
-
-
-
-\#### ✅ Components (20 marks)
-
-\- \[x] Card components (Element cards, sound cards, meditation cards)
-
-\- \[x] Scrollable lists (Home, Library, Meditation)
-
-\- \[x] Mobile form with 3+ field types (Profile settings: text input, dropdown, switches, filter chips)
-
-\- \[x] Additional components (Bottom navigation, sliders, badges, tabs)
-
-
-
-\#### ✅ Testing (10 marks)
-
-\- \[x] Live testing capability on emulator/device
-
-\- \[x] Test plan document included
-
-
-
-\#### ✅ Discretionary (20 marks)
-
-\- \[x] High-quality application design
-
-\- \[x] Clean, well-structured code
-
-\- \[x] Follows Android best practices
-
-\- \[x] Robust navigation and state management
-
-
-
-\## 🧪 Testing
-
 
 
 \### Supported Configurations
@@ -341,46 +253,6 @@ Uses `LocalConfiguration.current` to detect:
 \- \*\*Tested Screen Sizes\*\*: Phone (< 600dp), Tablet (600dp+)
 
 
-
-\### How to Test
-
-
-
-\#### Portrait/Landscape Testing
-
-1\. Run app on emulator or physical device
-
-2\. Press \*\*Ctrl + F11\*\* (Windows) or \*\*Cmd + Left Arrow\*\* (Mac) to rotate emulator
-
-3\. Verify layouts adapt correctly on each screen
-
-
-
-\#### Phone/Tablet Testing
-
-1\. Create/select a tablet emulator (e.g., Pixel Tablet)
-
-2\. Run the app
-
-3\. Verify grid layouts and increased spacing on larger screens
-
-
-
-\#### Dark/Light Mode Testing
-
-1\. Open device Settings → Display → Dark theme
-
-2\. Toggle dark mode on/off
-
-3\. Verify app theme changes automatically
-
-4\. Check color contrast and readability
-
-
-
-\### Test Cases
-
-See `TEST\_PLAN.md` for detailed test scenarios and expected results.
 
 
 
@@ -400,113 +272,6 @@ See `TEST\_PLAN.md` for detailed test scenarios and expected results.
 
 
 
-\### Setup Steps
-
-
-
-1\. \*\*Clone the repository\*\*
-
-&nbsp;  ```bash
-
-&nbsp;  git clone https://github.com/Dhanu45-sketch/ElementalASMR.git
-
-&nbsp;  cd ElementalASMR
-
-&nbsp;  ```
-
-
-
-2\. \*\*Open in Android Studio\*\*
-
-&nbsp;  - Open Android Studio
-
-&nbsp;  - Select "Open an Existing Project"
-
-&nbsp;  - Navigate to the cloned directory
-
-&nbsp;  - Wait for Gradle sync to complete
-
-
-
-3\. \*\*Run the application\*\*
-
-&nbsp;  - Connect an Android device or start an emulator
-
-&nbsp;  - Click the "Run" button (green play icon) or press Shift + F10
-
-&nbsp;  - Select your target device
-
-&nbsp;  - Wait for the app to build and install
-
-
-
-\### Building APK
-
-```bash
-
-\# Debug APK
-
-./gradlew assembleDebug
-
-
-
-\# Release APK (unsigned)
-
-./gradlew assembleRelease
-
-```
-
-
-
-\## 🎯 Future Enhancements
-
-
-
-\### Planned Features
-
-\- \[ ] Actual audio playback functionality with MediaPlayer
-
-\- \[ ] Firebase backend integration for user accounts
-
-\- \[ ] Cloud storage for user favorites and playlists
-
-\- \[ ] Download sounds for offline playback
-
-\- \[ ] Sleep timer with fade-out effect
-
-\- \[ ] Sound mixing (play multiple sounds simultaneously)
-
-\- \[ ] Custom meditation session creation
-
-\- \[ ] Statistics tracking and visualization
-
-\- \[ ] Widget for quick sound access
-
-\- \[ ] Wear OS companion app
-
-
-
-\### Technical Improvements
-
-\- \[ ] Implement actual data persistence with Room database
-
-\- \[ ] Add unit tests and UI tests
-
-\- \[ ] Implement dependency injection with Hilt
-
-\- \[ ] Add analytics tracking
-
-\- \[ ] Performance optimization with baseline profiles
-
-\- \[ ] Accessibility improvements (TalkBack support)
-
-
-
-\## 📄 License
-
-
-
-This project is developed as part of the COMP50011 - Mobile App Development I course assignment.
 
 
 
@@ -550,9 +315,8 @@ For questions or issues related to this project:
 
 
 
----
 
 
 
-\*\*Note\*\*: This is an educational project created for assignment purposes. The app uses placeholder data and does not include actual audio files or backend functionality.
+
 
