@@ -1,4 +1,3 @@
-// screens/MeditationScreen.kt (REPLACE YOUR EXISTING MeditationScreen.kt)
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration
@@ -21,9 +20,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.example.elementalasmr.models.MeditationSession
 import com.example.elementalasmr.models.SampleData
-import com.example.elementalasmr.utils.getElementColor
-import com.example.elementalasmr.utils.getElementColor
-import com.example.elementalasmr.utils.getElementIconDrawable
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -484,9 +481,9 @@ fun CompactMeditationCard(
 
 fun getDifficultyColor(difficulty: String): Color {
     return when (difficulty) {
-        "Beginner" -> Color(0xFF4CAF50)
-        "Intermediate" -> Color(0xFFFFA726)
-        "Advanced" -> Color(0xFFEF5350)
+        "Beginner" -> Color(0xFF009688)
+        "Intermediate" -> Color(0xFF2196F3)
+        "Advanced" -> Color(0xFF673AB7)
         else -> Color.Gray
     }
 }

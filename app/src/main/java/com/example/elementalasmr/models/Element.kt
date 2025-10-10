@@ -21,7 +21,7 @@ data class Sound(
     val name: String,
     val description: String,
     val duration: String,
-    val fileName: String, // Placeholder for now
+    val fileName: String, // Placeholder-file not added yet
     val element: ElementType,
     val isFavorite: Boolean = false
 )

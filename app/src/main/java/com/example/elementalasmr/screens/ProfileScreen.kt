@@ -1,4 +1,3 @@
-// screens/ProfileScreen.kt (REPLACE YOUR EXISTING ProfileScreen.kt)
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration

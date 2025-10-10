@@ -1,4 +1,3 @@
-// screens/PlayerScreen.kt (COMPLETE FILE - REPLACE EVERYTHING)
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration
@@ -19,8 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.elementalasmr.R
-import com.example.elementalasmr.models.ElementType
 import com.example.elementalasmr.models.SampleData
 import com.example.elementalasmr.models.Sound
 import com.example.elementalasmr.utils.getElementColor

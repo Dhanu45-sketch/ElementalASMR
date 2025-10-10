@@ -1,4 +1,3 @@
-// screens/LoginScreen.kt & RegisterScreen.kt (REPLACE BOTH)
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration

@@ -1,4 +1,4 @@
-// screens/LibraryScreen.kt (REPLACE YOUR EXISTING LibraryScreen.kt)
+
 package com.example.elementalasmr.screens
 
 import android.content.res.Configuration
@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.unit.dp
 import com.example.elementalasmr.models.ElementType
 import com.example.elementalasmr.models.SampleData
@@ -171,10 +170,6 @@ fun TabletLibraryLayout(
 }
 
 
-
-// LibraryScreen.kt - Update the icon usages
-
-// In LibrarySoundCard, change the Icon to Image:
 @Composable
 fun LibrarySoundCard(
     sound: Sound,
@@ -259,7 +254,6 @@ fun LibrarySoundCard(
     }
 }
 
-// In CompactLibrarySoundCard, change the Icon to Image:
 @Composable
 fun CompactLibrarySoundCard(
     sound: Sound,
@@ -277,7 +271,6 @@ fun CompactLibrarySoundCard(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            // Element icon - CHANGED to Image
             Surface(
                 modifier = Modifier
                     .fillMaxWidth()

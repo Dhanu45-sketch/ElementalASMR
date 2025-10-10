@@ -1,6 +1,6 @@
-// screens/LoginScreen.kt & RegisterScreen.kt (REPLACE BOTH)
+
 package com.example.elementalasmr.screens
-// screens/LoginScreen.kt - Updated LoginHeader function
+
 
 
 import androidx.compose.foundation.Image
@@ -13,21 +13,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.elementalasmr.R
 import android.content.res.Configuration
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-
-
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.unit.dp
+
 
 // ==================== LOGIN SCREEN ====================
 
@@ -152,12 +145,10 @@ fun LandscapeLoginLayout(
 }
 
 
-// REPLACE the LoginHeader composable with this:
 @Composable
 fun LoginHeader() {
-    // Use the AURA logo image
     Image(
-        painter = painterResource(id = R.drawable.aura_logo), // Make sure to add aura_logo.png to drawable
+        painter = painterResource(id = R.drawable.aura_logo),
         contentDescription = "AURA Logo",
         modifier = Modifier.size(120.dp)
     )

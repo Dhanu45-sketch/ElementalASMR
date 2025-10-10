@@ -14,6 +14,7 @@ import com.example.elementalasmr.ui.theme.ElementalASMRTheme
 fun NavGraph(
     navController: NavHostController,
     startDestination: String = Screen.Login.route
+
 ) {
     NavHost(
         navController = navController,

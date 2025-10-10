@@ -46,7 +46,7 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun ElementalASMRTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false, // Changed to false to use AURA colors
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

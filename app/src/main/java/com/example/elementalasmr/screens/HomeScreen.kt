@@ -30,6 +30,9 @@ import com.example.elementalasmr.utils.getElementColor
 import com.example.elementalasmr.utils.getElementIconDrawable
 
 @OptIn(ExperimentalMaterial3Api::class)
+// Tells the compiler this feature is experimental and might change later, but I still want to use it."
+
+
 @Composable
 fun HomeScreen(
     onElementClick: (Element) -> Unit,

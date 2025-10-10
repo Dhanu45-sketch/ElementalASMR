@@ -1,4 +1,3 @@
-// ui/theme/Type.kt (REPLACE YOUR ENTIRE Type.kt FILE)
 package com.example.elementalasmr.ui.theme
 
 import androidx.compose.material3.Typography
@@ -7,7 +6,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Roboto is Android's default font, so FontFamily.Default uses it
+
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = FontFamily.Default,

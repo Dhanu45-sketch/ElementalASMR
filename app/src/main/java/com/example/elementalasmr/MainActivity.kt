@@ -33,7 +33,7 @@ fun MainScreen() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    // Determine if we should show bottom navigation
+
     val showBottomBar = when (currentDestination?.route) {
         Screen.Login.route, Screen.Register.route, Screen.Player.route -> false
         else -> true
@@ -50,15 +50,12 @@ fun MainScreen() {
                             selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                             onClick = {
                                 navController.navigate(item.route) {
-                                    // Pop up to the start destination of the graph to
-                                    // avoid building up a large stack of destinations
+
                                     popUpTo(navController.graph.findStartDestination().id) {
                                         saveState = true
                                     }
-                                    // Avoid multiple copies of the same destination when
-                                    // reselecting the same item
+
                                     launchSingleTop = true
-                                    // Restore state when reselecting a previously selected item
                                     restoreState = true
                                 }
                             }
@@ -70,7 +67,8 @@ fun MainScreen() {
     ) { innerPadding ->
         NavGraph(
             navController = navController,
-            startDestination = Screen.Login.route
+            startDestination= Screen.Login.route
+            //startDestination = Screen.Home.route
         )
     }
 }
